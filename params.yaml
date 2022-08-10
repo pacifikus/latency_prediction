@@ -1,0 +1,29 @@
+base:
+  seed: 2022
+generation:
+  n_models: 10
+  dim: 128
+  n_experiments_by_net: 5
+  n_blocks: [2, 3]
+  n_conv_layers_in_block: [1, 2, 3]
+  n_linear_layers_in_block: [1, 2, 3]
+  activations: ['ReLU', 'LeakyReLU']
+  in_channels: 3
+  conv:
+    kernel_size: [2, 3]
+    stride: [1, 2]
+    padding: [0, 1]
+  pooling:
+    type: ['Max', 'Avg']
+    kernel_size: [2, 3]
+    stride: [1, 2]
+    padding: [0, 1]
+data:
+  nn_models_path: data/models/
+  model_result_df_path: data/result.csv
+  processed_df_path: data/processed_df.csv
+training:
+  ridge_alpha: 10
+  test_size: 0.3
+  cv: 3
+  cv_scoring: neg_mean_absolute_percentage_error
